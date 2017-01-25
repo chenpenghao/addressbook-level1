@@ -958,13 +958,14 @@ public class AddressBook {
      *
      * @param personData person string representation
      */
+
     private static boolean isPersonDataExtractableFrom(String personData) {
         final String matchAnyPersonDataPrefix = PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
         final String[] splitArgs = personData.trim().split(matchAnyPersonDataPrefix);
         return splitArgs.length == 3 // 3 arguments
-                && !splitArgs[0].isEmpty() // non-empty arguments
-                && !splitArgs[1].isEmpty()
-                && !splitArgs[2].isEmpty();
+                && !splitArgs[PERSON_DATA_INDEX_NAME].isEmpty() // non-empty arguments
+                && !splitArgs[PERSON_DATA_INDEX_PHONE].isEmpty()
+                && !splitArgs[PERSON_DATA_INDEX_EMAIL].isEmpty();
     }
 
     /**
