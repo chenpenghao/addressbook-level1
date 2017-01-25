@@ -169,6 +169,10 @@ public class AddressBook {
     private static final int LENGTHSETUPGIVENFILE = 1;
     private static final int LENGTHSETUPDEFAULT = 0;
     
+    /**
+     * length of string in isPersonDataExtractableFrom that could be extracted 
+     */
+    private static final int LENGTH_OF_ARGS_TO_SPLIT = 3;
 
     /*
      * This variable is declared for the whole class (instead of declaring it
