@@ -160,6 +160,16 @@ public class AddressBook {
      */
     private static final char INPUT_COMMENT_MARKER = '#';
     
+    /**
+     * length of input in processProgramArgs. If length of input is greater than 2, then it is invalid;
+     * if length of input is 1, then setup a given file for storage
+     * if length of input is 0, then setup a default file
+     */
+    private static final int LENGTHINVALID = 2;
+    private static final int LENGTHSETUPGIVENFILE = 1;
+    private static final int LENGTHSETUPDEFAULT = 0;
+    
+
     /*
      * This variable is declared for the whole class (instead of declaring it
      * inside the readUserCommand() method to facilitate automated testing using
