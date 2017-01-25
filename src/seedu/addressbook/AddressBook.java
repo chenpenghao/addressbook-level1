@@ -159,7 +159,7 @@ public class AddressBook {
      * If the first non-whitespace character in a user's input line is this, that line will be ignored.
      */
     private static final char INPUT_COMMENT_MARKER = '#';
-
+    
     /*
      * This variable is declared for the whole class (instead of declaring it
      * inside the readUserCommand() method to facilitate automated testing using
@@ -256,10 +256,7 @@ public class AddressBook {
      *
      * @param args full program arguments passed to application main method
      */
-    private static final int LENGTHINVALID = 2;
-    private static final int LENGTHSETUPGIVENFILE = 1;
-    private static final int LENGTHSETUPDEFAULT = 0;
-    
+
     private static void processProgramArgs(String[] args) {
         if (args.length >= LENGTHINVALID) {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
@@ -325,7 +322,8 @@ public class AddressBook {
         } catch (InvalidPathException ipe) {
             return false;
         }
-        return hasValidParentDirectory(filePathToValidate) && hasValidFileName(filePathToValidate);
+        return hasValidParentDirectory(filePathToValidate) 
+        		&& hasValidFileName(filePathToValidate);
     }
 
     /**
@@ -388,7 +386,8 @@ public class AddressBook {
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
         default:
-            return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
+            return getMessageForInvalidCommandInput(
+            		commandType, getUsageInfoForAllCommands());
         }
     }
 
@@ -425,7 +424,8 @@ public class AddressBook {
 
         // checks if args are valid (decode result will not be present if the person is invalid)
         if (!decodeResult.isPresent()) {
-            return getMessageForInvalidCommandInput(COMMAND_ADD_WORD, getUsageInfoForAddCommand());
+            return getMessageForInvalidCommandInput(
+            		COMMAND_ADD_WORD, getUsageInfoForAddCommand());
         }
 
         // add the person as specified
@@ -443,7 +443,9 @@ public class AddressBook {
      */
     private static String getMessageForSuccessfulAddPerson(String[] addedPerson) {
         return String.format(MESSAGE_ADDED,
-                getNameFromPerson(addedPerson), getPhoneFromPerson(addedPerson), getEmailFromPerson(addedPerson));
+                getNameFromPerson(addedPerson), 
+                getPhoneFromPerson(addedPerson), 
+                getEmailFromPerson(addedPerson));
     }
 
     /**
@@ -559,7 +561,9 @@ public class AddressBook {
      * @return successful delete person feedback message
      */
     private static String getMessageForSuccessfulDelete(String[] deletedPerson) {
-        return String.format(MESSAGE_DELETE_PERSON_SUCCESS, getMessageForFormattedPersonData(deletedPerson));
+        return String.format(
+        		MESSAGE_DELETE_PERSON_SUCCESS, 
+        		getMessageForFormattedPersonData(deletedPerson));
     }
 
     /**
@@ -673,7 +677,9 @@ public class AddressBook {
      */
     private static String getMessageForFormattedPersonData(String[] person) {
         return String.format(MESSAGE_DISPLAY_PERSON_DATA,
-                getNameFromPerson(person), getPhoneFromPerson(person), getEmailFromPerson(person));
+                getNameFromPerson(person), 
+                getPhoneFromPerson(person), 
+                getEmailFromPerson(person));
     }
 
     /**
@@ -888,7 +894,9 @@ public class AddressBook {
      */
     private static String encodePersonToString(String[] person) {
         return String.format(PERSON_STRING_REPRESENTATION,
-                getNameFromPerson(person), getPhoneFromPerson(person), getEmailFromPerson(person));
+                getNameFromPerson(person), 
+                getPhoneFromPerson(person), 
+                getEmailFromPerson(person));
     }
 
     /**
